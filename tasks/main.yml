@@ -1,0 +1,30 @@
+---
+# tasks file for add-job-to-bareos-director
+
+- name: "Creating backup folder in z-storage/backups"
+  become: true
+  become_method: sudo
+  file:
+    path: "{{ archive_device }}"
+    state: directory
+    owner: bareos
+    group: bareos
+    mode: 0750
+    recurse: yes
+
+- name: Push Bareos-Dir configuration file
+  become: true
+  become_method: sudo
+  template: src={{item.src}} dest={{item.dest}}  mode=0750 owner=bareos group=bareos
+  with_items:
+      - { src: '../templates/bareos-dir.d/client/client-name-fd.conf', dest: "/etc/bareos/bareos-dir.d/client/{{ host_name }}-fd.conf" }
+      - { src: '../templates/bareos-dir.d/fileset/client-fileset.conf', dest: "/etc/bareos/bareos-dir.d/fileset/{{ host_name }}-FileSet.conf" }
+      - { src: '../templates/bareos-dir.d/job/job-name.conf', dest: "/etc/bareos/bareos-dir.d/job/{{ host_name }}-Backup.conf" }
+      - { src: '../templates/bareos-dir.d/jobdefs/client-jobdefs.conf', dest: "/etc/bareos/bareos-dir.d/jobdefs/{{ host_name }}-JobDefs.conf" }
+      - { src: '../templates/bareos-dir.d/pool/chosen-pool-full.conf', dest: "/etc/bareos/bareos-dir.d/pool/{{ host_name }}-Full-Pool.conf" }
+      - { src: '../templates/bareos-dir.d/pool/chosen-pool-incremental.conf', dest: "/etc/bareos/bareos-dir.d/pool/{{ host_name }}-Incremental-Pool.conf" }
+      - { src: '../templates/bareos-dir.d/schedule/client-schedule.conf', dest: "/etc/bareos/bareos-dir.d/schedule/{{ host_name }}-Schedule.conf" }
+      - { src: '../templates/bareos-sd.d/device/storage-device.conf', dest: "/etc/bareos/bareos-sd.d/device/File-{{ host_name }}-Storage.conf" }
+      - { src: '../templates/bareos-dir.d/storage/client-storage.conf', dest: "/etc/bareos/bareos-dir.d/storage/{{ host_name }}-Storage.conf" }
+  notify: "restart bareos all"
+

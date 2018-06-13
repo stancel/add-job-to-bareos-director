@@ -1,0 +1,23 @@
+---
+# handlers file for add-job-to-bareos-director
+
+- name: reload bareos-dir
+  become: true
+  become_method: sudo
+  service: name=bareos-dir state=restarted
+  listen: "restart bareos all"
+
+- name: reload bareos-sd
+  become: true
+  become_method: sudo
+  service: name=bareos-sd state=restarted
+  listen: "restart bareos all"
+
+- name: reload bareos-fd
+  become: true
+  become_method: sudo
+  service: name=bareos-sd state=restarted
+  listen: "restart bareos all"
+
+
+
