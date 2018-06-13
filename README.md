@@ -82,27 +82,35 @@ There are some additional straightforward variables whose values are set in the 
 	`backup_name: "{{ host_name }} Backup"`
 
 Individual File Records Storage Length - affects browsing files in GUI
+
 	`file_retention: 90 days`
 	
 Job Records in the DB - how long to store info/metadata about these backups
+
 	`job_retention: 6 months`
 	
 How long to actually store the backup files
+
 	`volume_retention_full: 12 months`
 	
 Maximum size of each backup volume/file
+
 	`maximum_volume_bytes_full: 10G`
 	
 Limit number of Volumes in Pool
+
 	`maximum_volumes_full: 10`
 
 How long to actually store the backup files
+
 	`volume_retention_incremental: 12 months`
 
 Maximum size of each backup volume/file
+
 	`maximum_volume_bytes_incremental: 10G`
 
 Limit number of Volumes in Pool
+
 	`maximum_volumes_incremental: 10`
 
 
@@ -115,17 +123,17 @@ No dependencies on other Ansible roles.
 Example Playbook
 ----------------
 
-```
+
 	- hosts: your_bareos_server
 	  vars_files:
 	    - vars/main.yml
 	  roles:
 	    - { role: stancel.add-job-to-bareos-director }
-```
+
 
 or 
 
-```
+
 	- hosts: your_bareos_server
 	  vars:
 		host_name: "my-important-crm-server"
@@ -148,7 +156,7 @@ or
 	      - File = "/var/www/html/.gitignore"
 	  roles:
 	    - { role: stancel.add-job-to-bareos-director }
-```
+
 
 License
 -------
