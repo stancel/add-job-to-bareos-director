@@ -143,17 +143,17 @@ or
 		level: Incremental
 		priority: 6
 		backup_schedule:
-		    - Run = Full sun at 02:00
-	        - Run = Incremental mon-sat at 02:00
+			- Run = Full sun at 02:00
+			- Run = Incremental mon-sat at 02:00
 		archive_device: "/z-storage/backups/{{ host_name }}"
 		filesets_to_backup:
-	        - File = "/var/www/html"
-	        - File = "/path/to/your/directory"
-	        - File = "/backups/mysql/current"
+			- File = "/var/www/html"
+			- File = "/path/to/your/directory"
+			- File = "/backups/mysql/current"
 		filesets_to_exclude:
-	        - File = "/var/www/html/.github"
-	        - File = "/var/www/html/.git"
-	        - File = "/var/www/html/.gitignore"
+			- File = "/var/www/html/.github"
+			- File = "/var/www/html/.git"
+			- File = "/var/www/html/.gitignore"
 	  roles:
 	    - { role: stancel.add-job-to-bareos-director }
 
