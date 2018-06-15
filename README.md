@@ -118,7 +118,7 @@ Limit number of Volumes in Pool
 ```
 	maximum_volumes_incremental: 10
 ```
-ß
+
 
 Dependencies
 ------------
