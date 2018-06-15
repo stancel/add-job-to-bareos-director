@@ -24,7 +24,11 @@ The hostname of the machine you are backing up
 The fully qualified domain name or IP address of the machine you are adding to be backed up
 
 	`server_fqdn: "crm.example.com"`
-	
+
+The fully qualified domain name or IP address of where your Bareos Storage Daemon/Service is running. For most people this will probably be the same FQDN of where the Bareos Director daemon/service runs (your Bareos Server), but can be a separate machine.
+```
+	bareos_storage_daemon_fqdn: "To Be Filled In"
+```	
 This is a very important one. It needs to match the client_password entered when adding the bareos client program to the machine you want to backup. You will probably want to see the [Ansible role I wrote for that purpose (install-bareos-client) here](https://github.com/stancel/install-bareos-client). The value for this is usually a very long string (47 characters) of random characters like below.
 
 	`client_password: "kAgt2SJTysbg5iRpcnj5XRexuEnDieGCetCXNQrYGuzNxCf"`
