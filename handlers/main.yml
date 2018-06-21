@@ -16,7 +16,7 @@
 - name: reload bareos-fd
   become: true
   become_method: sudo
-  service: name=bareos-sd state=restarted
+  service: name=bareos-fd state=restarted
   listen: "restart bareos all"
 
 
