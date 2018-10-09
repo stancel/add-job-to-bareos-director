@@ -28,3 +28,24 @@
       - { src: '../templates/bareos-dir.d/storage/client-storage.conf', dest: "/etc/bareos/bareos-dir.d/storage/{{ host_name }}-Storage.conf" }
   notify: "restart bareos all"
 
+- name: "Force Restarting of Bareos Director Daemon"
+  become: true
+  become_method: sudo
+  service: 
+    name: bareos-dir 
+    state: restarted
+
+- name: "Force Restarting of Bareos Storage Daemon"
+  become: true
+  become_method: sudo
+  service: 
+    name: bareos-sd 
+    state: restarted
+
+- name: "Force Restarting of Bareos File Daemon"
+  become: true
+  become_method: sudo
+  service: 
+    name: bareos-fd 
+    state: restarted
+
