@@ -18,6 +18,3 @@
   become_method: sudo
   service: name=bareos-fd state=restarted
   listen: "restart bareos all"
-
-
-

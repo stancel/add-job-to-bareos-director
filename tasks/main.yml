@@ -15,7 +15,7 @@
 - name: Push Bareos-Dir configuration file
   become: true
   become_method: sudo
-  template: src={{item.src}} dest={{item.dest}}  mode=0750 owner=bareos group=bareos
+  template: src={{ item.src }} dest={{ item.dest }}  mode=0750 owner=bareos group=bareos
   with_items:
       - { src: '../templates/bareos-dir.d/client/client-name-fd.conf', dest: "/etc/bareos/bareos-dir.d/client/{{ add_job_to_bareos_director_host_name }}-fd.conf" }
       - { src: '../templates/bareos-dir.d/fileset/client-fileset.conf', dest: "/etc/bareos/bareos-dir.d/fileset/{{ add_job_to_bareos_director_host_name }}-FileSet.conf" }
@@ -48,4 +48,3 @@
   service: 
     name: bareos-fd 
     state: restarted
-

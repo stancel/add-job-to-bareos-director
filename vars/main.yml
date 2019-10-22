@@ -1,7 +1,6 @@
 ---
 # vars file for add-job-to-bareos-director
 
-
 #####     Required Variables      #####
 # Fill in appropriate values below unless passing from a higher precedence
 
@@ -18,7 +17,6 @@ add_job_to_bareos_director_bareos_storage_daemon_fqdn: "{{ lookup('env', 'BAREOS
 add_job_to_bareos_director_client_password: "To Be Filled In"
 # The storage director password variable is the bareos-dir password found on your Bareos Server
 add_job_to_bareos_director_storage_director_password: "{{ lookup('env', 'BAREOS_STORAGE_PASSWORD') }}"
-
 
 # Backup Level - Full, Incremental, Differential
 # Incremental - all ﬁles changed since the last Full, Diﬀerential, or Incremental backup started
@@ -43,7 +41,6 @@ add_job_to_bareos_director_filesets_to_exclude:
   - File = "/var/www/html/.github"
   - File = "/var/www/html/.git"
   - File = "/var/www/html/.gitignore"
-
 
 #####     Optional Variables      #####
 
@@ -71,12 +68,3 @@ add_job_to_bareos_director_filesets_to_exclude:
 #maximum_volume_bytes_incremental: 10G
 # Limit number of Volumes in Pool
 #add_job_to_bareos_director_maximum_volumes_incremental: 10
-
-
-
-
-
-
-
-
-
